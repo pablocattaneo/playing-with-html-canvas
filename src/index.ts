@@ -4,6 +4,16 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const context = canvas.getContext("2d") as CanvasRenderingContext2D;
 context.fillStyle = "black";
+let mouse:Mouse;
+
+class Mouse {
+  constructor(public xMousePisition:number, public yMousePisition:number){}
+}
+mouse = new Mouse(0, 0)
+
+window.addEventListener('mousemove', (event)=>{
+  mouse = new Mouse(event.x, event.y)
+})
 
 class Circle {
   private radiusArc: number = 30;
@@ -21,11 +31,12 @@ class Circle {
   }
   draw() {
     this.context.beginPath();
+    this.context.fillStyle = 'green'
     this.context.arc(this.xPositionArc, this.yPositionArc, this.radiusArc, 0, 2 * Math.PI);
     this.context.stroke();
+    this.context.fill()
   }
-  update() {
-    console.log("update");
+  updateDraw() {
     if (
       this.xPositionArc + this.radiusArc >= canvas.width ||
       this.xPositionArc - this.radiusArc <= 0
@@ -37,6 +48,13 @@ class Circle {
       this.yPositionArc - this.radiusArc <= 0
     ) {
       this.yPositionArcVelocity = -this.yPositionArcVelocity;
+    }
+    if((mouse.xMousePisition - this.xPositionArc) > 10 ) {
+      if (this.radiusArc < 100) {
+        this.radiusArc += 1
+      }
+    } else if (this.radiusArc > 2){
+      this.radiusArc -= 1
     }
     this.xPositionArc += this.xPositionArcVelocity;
     this.yPositionArc += this.yPositionArcVelocity;
@@ -67,7 +85,7 @@ function animate() {
   window.requestAnimationFrame(animate);
   context.clearRect(0, 0, canvas.width, canvas.height);
   circleArray.forEach(circle => {
-    circle.update();
+    circle.updateDraw();
   });
 }
 
