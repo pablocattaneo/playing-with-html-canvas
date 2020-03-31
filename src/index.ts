@@ -15,9 +15,21 @@ window.addEventListener('mousemove', (event)=>{
   mouse = new Mouse(event.x, event.y)
 })
 
+class Utilities {
+  static colorsArray: string[] = [
+    'blue',
+    'green',
+    'red',
+    'pink',
+    'blue',
+    'black'
+  ]
+}
+
 class Circle {
   private radiusArc: number = 30;
   private maxRadiusArc: number = 100
+  private fillColor: string = Utilities.colorsArray[Math.floor(Math.random() * Utilities.colorsArray.length)]
   constructor(
     private context:CanvasRenderingContext2D,
     private xPositionArc: number,
@@ -32,7 +44,7 @@ class Circle {
   }
   draw() {
     this.context.beginPath();
-    this.context.fillStyle = 'green'
+    this.context.fillStyle = this.fillColor
     this.context.arc(this.xPositionArc, this.yPositionArc, this.radiusArc, 0, 2 * Math.PI);
     this.context.stroke();
     this.context.fill()
