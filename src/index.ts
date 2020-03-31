@@ -17,6 +17,7 @@ window.addEventListener('mousemove', (event)=>{
 
 class Circle {
   private radiusArc: number = 30;
+  private maxRadiusArc: number = 100
   constructor(
     private context:CanvasRenderingContext2D,
     private xPositionArc: number,
@@ -50,7 +51,7 @@ class Circle {
       this.yPositionArcVelocity = -this.yPositionArcVelocity;
     }
     if((mouse.xMousePisition - this.xPositionArc) > 10 ) {
-      if (this.radiusArc < 100) {
+      if (this.radiusArc < this.maxRadiusArc) {
         this.radiusArc += 1
       }
     } else if (this.radiusArc > 2){
