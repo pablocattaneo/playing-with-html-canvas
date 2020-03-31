@@ -15,20 +15,24 @@ window.addEventListener('mousemove', (event)=>{
   mouse = new Mouse(event.x, event.y)
 })
 
+window.addEventListener('resize', ()=>{
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+})
+
 class Utilities {
   static colorsArray: string[] = [
-    'blue',
-    'green',
-    'red',
-    'pink',
-    'blue',
-    'black'
+    'rgba(237, 188, 160, 1)',
+    'rgba(157, 163, 164, 1)',
+    'rgba(96, 77, 83, 1)',
+    'rgba(219, 127, 142, 1)',
+    'rgba(255, 219, 218, 1)',
   ]
 }
 
 class Circle {
   private radiusArc: number = 30;
-  private maxRadiusArc: number = 100
+  private maxRadiusArc: number = 70
   private fillColor: string = Utilities.colorsArray[Math.floor(Math.random() * Utilities.colorsArray.length)]
   constructor(
     private context:CanvasRenderingContext2D,
@@ -66,7 +70,7 @@ class Circle {
       if (this.radiusArc < this.maxRadiusArc) {
         this.radiusArc += 1
       }
-    } else if (this.radiusArc > 2){
+    } else if (this.radiusArc > 5){
       this.radiusArc -= 1
     }
     this.xPositionArc += this.xPositionArcVelocity;
@@ -75,11 +79,11 @@ class Circle {
   }
 }
 const circleArray: Circle[] = [];
-for (let index = 0; index < 25; index++) {
+for (let index = 0; index < 150; index++) {
   const xPositionArc: number = Math.random() * canvas.width;
   const yPositionArc: number = Math.random() * canvas.height;
-  const strokeStyle: string = "blue";
-  const lineWidth: number = Math.random() * 50;
+  const strokeStyle: string = "black";
+  const lineWidth: number = 1;
   const xPositionArcVelocity: number = Math.random() * 10;
   const yPositionArcVelocity: number = Math.random() * 10;
   circleArray.push(
