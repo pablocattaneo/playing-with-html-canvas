@@ -36,8 +36,8 @@ class Circle {
   private fillColor: string = Utilities.colorsArray[Math.floor(Math.random() * Utilities.colorsArray.length)]
   constructor(
     private context:CanvasRenderingContext2D,
-    private xPositionArc: number,
-    private yPositionArc: number,
+    private xCenterPositionArc: number,
+    private yCenterPositionArc: number,
     private strokeStyle: string,
     private lineWidth: number,
     private xPositionArcVelocity: number,
@@ -49,32 +49,32 @@ class Circle {
   draw() {
     this.context.beginPath();
     this.context.fillStyle = this.fillColor
-    this.context.arc(this.xPositionArc, this.yPositionArc, this.radiusArc, 0, 2 * Math.PI);
+    this.context.arc(this.xCenterPositionArc, this.yCenterPositionArc, this.radiusArc, 0, 2 * Math.PI);
     this.context.stroke();
     this.context.fill()
   }
   updateDraw() {
     if (
-      this.xPositionArc + this.radiusArc >= canvas.width ||
-      this.xPositionArc - this.radiusArc <= 0
+      this.xCenterPositionArc + this.radiusArc >= canvas.width ||
+      this.xCenterPositionArc - this.radiusArc <= 0
     ) {
       this.xPositionArcVelocity = -this.xPositionArcVelocity;
     }
     if (
-      this.yPositionArc + this.radiusArc >= canvas.height ||
-      this.yPositionArc - this.radiusArc <= 0
+      this.yCenterPositionArc + this.radiusArc >= canvas.height ||
+      this.yCenterPositionArc - this.radiusArc <= 0
     ) {
       this.yPositionArcVelocity = -this.yPositionArcVelocity;
     }
-    if((mouse.xMousePisition - this.xPositionArc) > 10 ) {
+    if((mouse.xMousePisition - this.xCenterPositionArc) > 10 ) {
       if (this.radiusArc < this.maxRadiusArc) {
         this.radiusArc += 1
       }
     } else if (this.radiusArc > 5){
       this.radiusArc -= 1
     }
-    this.xPositionArc += this.xPositionArcVelocity;
-    this.yPositionArc += this.yPositionArcVelocity;
+    this.xCenterPositionArc += this.xPositionArcVelocity;
+    this.yCenterPositionArc += this.yPositionArcVelocity;
     this.draw();
   }
 }
