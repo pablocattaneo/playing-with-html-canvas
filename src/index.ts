@@ -74,8 +74,8 @@ class Circle {
     this.yCenterPositionArc += this.yPositionArcVelocity;
     this.draw();
   }
-  leftRightMouseEffect(mouse:Mouse){
-    if((mouse.xMousePisition - this.xCenterPositionArc) > 10 ) {
+  leftRightMouseEffect(mouse:Mouse, distanceForGrowth: number = 10){
+    if((mouse.xMousePisition - this.xCenterPositionArc) >= distanceForGrowth ) {
       if (this.radiusArc < this.maxRadiusArc) {
         this.radiusArc += 1
       }
