@@ -69,18 +69,18 @@ class Circle {
       }
 
     }
-    this.leftRightMouseEffect(mouse)
+    this.leftRightMouseEffect(mouse, 10)
     this.xCenterPositionArc += this.xPositionArcVelocity;
     this.yCenterPositionArc += this.yPositionArcVelocity;
     this.draw();
   }
-  leftRightMouseEffect(mouse:Mouse, distanceForGrowth: number = 10){
+  leftRightMouseEffect(mouse:Mouse, distanceForGrowth: number = 10, growthVelocity: number = 1){
     if((mouse.xMousePisition - this.xCenterPositionArc) >= distanceForGrowth ) {
       if (this.radiusArc < this.maxRadiusArc) {
-        this.radiusArc += 1
+        this.radiusArc += growthVelocity
       }
     } else if (this.radiusArc > 5){
-      this.radiusArc -= 1
+      this.radiusArc -= this.radiusArc - growthVelocity > 5 ? growthVelocity : 1
     }
   }
 }
