@@ -53,8 +53,8 @@ class Circle {
     this.context.stroke();
     this.context.fill()
   }
-  redraw(canvas: HTMLCanvasElement, cordinationMustKeepInsideCanvas: boolean = true) {
-    if (cordinationMustKeepInsideCanvas) {
+  redraw(canvas: HTMLCanvasElement, coordinateMustKeepInsideCanvas: boolean = true) {
+    if (coordinateMustKeepInsideCanvas) {
       if (
         this.xCenterPositionArc + this.radiusArc >= canvas.width ||
         this.xCenterPositionArc - this.radiusArc <= 0
