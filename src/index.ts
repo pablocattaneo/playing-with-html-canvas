@@ -69,6 +69,12 @@ class Circle {
       }
 
     }
+    this.leftRightMouseEffect(mouse)
+    this.xCenterPositionArc += this.xPositionArcVelocity;
+    this.yCenterPositionArc += this.yPositionArcVelocity;
+    this.draw();
+  }
+  leftRightMouseEffect(mouse:Mouse){
     if((mouse.xMousePisition - this.xCenterPositionArc) > 10 ) {
       if (this.radiusArc < this.maxRadiusArc) {
         this.radiusArc += 1
@@ -76,9 +82,6 @@ class Circle {
     } else if (this.radiusArc > 5){
       this.radiusArc -= 1
     }
-    this.xCenterPositionArc += this.xPositionArcVelocity;
-    this.yCenterPositionArc += this.yPositionArcVelocity;
-    this.draw();
   }
 }
 const circleArray: Circle[] = [];
