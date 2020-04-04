@@ -53,7 +53,7 @@ class Circle {
     this.context.stroke();
     this.context.fill()
   }
-  updateDraw(canvas: HTMLCanvasElement, cordinationMustKeepInsideCanvas: boolean = true) {
+  redraw(canvas: HTMLCanvasElement, cordinationMustKeepInsideCanvas: boolean = true) {
     if (cordinationMustKeepInsideCanvas) {
       if (
         this.xCenterPositionArc + this.radiusArc >= canvas.width ||
@@ -105,7 +105,7 @@ function animate() {
   window.requestAnimationFrame(animate);
   context.clearRect(0, 0, canvas.width, canvas.height);
   circleArray.forEach(circle => {
-    circle.updateDraw(canvas);
+    circle.redraw(canvas);
   });
 }
 
