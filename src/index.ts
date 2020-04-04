@@ -53,18 +53,21 @@ class Circle {
     this.context.stroke();
     this.context.fill()
   }
-  updateDraw() {
-    if (
-      this.xCenterPositionArc + this.radiusArc >= canvas.width ||
-      this.xCenterPositionArc - this.radiusArc <= 0
-    ) {
-      this.xPositionArcVelocity = -this.xPositionArcVelocity;
-    }
-    if (
-      this.yCenterPositionArc + this.radiusArc >= canvas.height ||
-      this.yCenterPositionArc - this.radiusArc <= 0
-    ) {
-      this.yPositionArcVelocity = -this.yPositionArcVelocity;
+  updateDraw(canvas: HTMLCanvasElement, cordinationMustKeepInsideCanvas: boolean = true) {
+    if (cordinationMustKeepInsideCanvas) {
+      if (
+        this.xCenterPositionArc + this.radiusArc >= canvas.width ||
+        this.xCenterPositionArc - this.radiusArc <= 0
+      ) {
+        this.xPositionArcVelocity = -this.xPositionArcVelocity;
+      }
+      if (
+        this.yCenterPositionArc + this.radiusArc >= canvas.height ||
+        this.yCenterPositionArc - this.radiusArc <= 0
+      ) {
+        this.yPositionArcVelocity = -this.yPositionArcVelocity;
+      }
+
     }
     if((mouse.xMousePisition - this.xCenterPositionArc) > 10 ) {
       if (this.radiusArc < this.maxRadiusArc) {
@@ -102,7 +105,7 @@ function animate() {
   window.requestAnimationFrame(animate);
   context.clearRect(0, 0, canvas.width, canvas.height);
   circleArray.forEach(circle => {
-    circle.updateDraw();
+    circle.updateDraw(canvas);
   });
 }
 
