@@ -1,5 +1,5 @@
-import Circle from "./Circle"
-import Mouse from "./Mouse"
+import Circle from "./Circle";
+import Mouse from "./Mouse";
 
 const canvas = document.getElementById("canvas")! as HTMLCanvasElement;
 
@@ -8,10 +8,10 @@ canvas.height = window.innerHeight;
 const context = canvas.getContext("2d") as CanvasRenderingContext2D;
 context.fillStyle = "black";
 
-window.addEventListener('resize', ()=>{
+window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-})
+});
 
 const circleArray: Circle[] = [];
 for (let index = 0; index < 150; index++) {
@@ -36,7 +36,7 @@ for (let index = 0; index < 150; index++) {
 function animate() {
   window.requestAnimationFrame(animate);
   context.clearRect(0, 0, canvas.width, canvas.height);
-  circleArray.forEach(circle => {
+  circleArray.forEach((circle) => {
     circle.redraw(canvas);
   });
 }
