@@ -75,6 +75,9 @@ export default class Circle {
     this.yCenterPositionArc += this.yPositionArcVelocity;
     this.draw();
   }
+  setCoordinatesLeftRightMouseEffect(){
+
+  }
   leftRightMouseEffect(
     dinamicCoordinates: DinamicCoordinates,
     distanceForGrowth: number = 10,
