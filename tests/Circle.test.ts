@@ -22,7 +22,7 @@ describe('Circle', () => {
 });
 
 describe('Circle setCoordinatesLeftRightMouseEffect', () => {
-  it('setCoordinatesLeftRightMouseEffect is Definded', () => {
+  it('setCoordinatesLeftRightMouseEffect is defined', () => {
     const circle = new Circle(context, 15, 15, 'black', 5, 5, 5);
     expect(circle.setCoordinatesLeftRightMouseEffect).toBeDefined()
   });
