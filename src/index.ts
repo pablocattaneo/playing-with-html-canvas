@@ -1,5 +1,5 @@
 import Circle from "./Circle";
-import Mouse from "./Mouse";
+import DinamicCoordinates from "./DinamicCoordinates";
 
 const canvas = document.getElementById("canvas")! as HTMLCanvasElement;
 
