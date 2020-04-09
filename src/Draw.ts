@@ -1,1 +1,3 @@
-export default class Draw {}
+export default class Draw {
+  constructor(private context: CanvasRenderingContext2D){}
+}
