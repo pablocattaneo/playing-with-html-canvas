@@ -21,4 +21,8 @@ describe("Draw", () => {
   it("Developer set property fillColor to red, so property value context.fillStyle have to be #f00", () => {
     expect(context.fillStyle).toMatch('#f00');
   });
+  it("Developer set NO property fillColor, so property value context.fillStyle have to be #000", () => {
+    draw = new Draw( context );
+    expect(context.fillStyle).toMatch('#000');
+  });
 });
