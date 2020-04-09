@@ -11,11 +11,14 @@ beforeEach(() => {
   document.body.appendChild(canvas);
   canvasEl = document.getElementById("my-canvas")! as HTMLCanvasElement;
   context = canvasEl.getContext("2d") as CanvasRenderingContext2D;
-  draw = new Draw( context );
+  draw = new Draw( context, 'red' );
 });
 
 describe("Draw", () => {
   it("Developer use a Draw class, so should exist", () => {
     expect(draw).toBeInstanceOf(Draw);
+  });
+  it("Developer set property fillColor to red, so property value context.fillStyle have to be #f00", () => {
+    expect(context.fillStyle).toMatch('#f00');
   });
 });
