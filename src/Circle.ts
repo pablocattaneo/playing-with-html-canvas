@@ -1,14 +1,12 @@
-class DinamicCoordinates {
-  constructor(public xPosition: number, public yPosition: number) {}
-}
+import DinamicCoordinates from "./DinamicCoordinates";
 
-let dinamicCoordinates: DinamicCoordinates;
+// let dinamicCoordinates: DinamicCoordinates;
 
-dinamicCoordinates = new DinamicCoordinates(0, 0);
+// dinamicCoordinates = new DinamicCoordinates(0, 0);
 
-window.addEventListener("mousemove", (event) => {
-  dinamicCoordinates = new DinamicCoordinates(event.x, event.y);
-});
+// window.addEventListener("mousemove", (event) => {
+//   dinamicCoordinates = new DinamicCoordinates(event.x, event.y);
+// });
 
 class Utilities {
   static colorsArray: string[] = [
@@ -21,6 +19,7 @@ class Utilities {
 }
 
 export default class Circle {
+  private dinamicCoordinates: DinamicCoordinates = new DinamicCoordinates(0, 0);
   private radiusArc: number = 30;
   private maxRadiusArc: number = 70;
   private fillColor: string =
@@ -70,13 +69,15 @@ export default class Circle {
         this.yPositionArcVelocity = -this.yPositionArcVelocity;
       }
     }
-    this.leftRightMouseEffect(dinamicCoordinates);
+    this.leftRightMouseEffect(this.dinamicCoordinates);
     this.xCenterPositionArc += this.xPositionArcVelocity;
     this.yCenterPositionArc += this.yPositionArcVelocity;
     this.draw();
   }
-  setCoordinatesLeftRightMouseEffect(){
-
+  setCoordinatesLeftRightMouseEffect(
+    dinamicCoordinatesParameter: DinamicCoordinates
+  ) {
+    this.dinamicCoordinates = dinamicCoordinatesParameter;
   }
   leftRightMouseEffect(
     dinamicCoordinates: DinamicCoordinates,
