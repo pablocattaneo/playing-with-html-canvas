@@ -48,7 +48,6 @@ describe("Draw", () => {
     img.src = '../assets/images/canvas_createpattern.png';
     const pattern = context.createPattern(img, 'repeat') as CanvasPattern
     draw = new Draw( context, pattern);
-    console.log(context.fillStyle)
     expect(context.fillStyle).toBeInstanceOf(CanvasPattern);
   });
 
