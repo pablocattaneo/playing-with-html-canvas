@@ -7,6 +7,7 @@ let draw: Draw;
 let beginPath: object;
 let stroke: object;
 let arc: object;
+let fill: object;
 let circle: Circle;
 beforeEach(() => {
   const canvas = document.createElement("canvas");
@@ -21,6 +22,7 @@ beforeEach(() => {
   beginPath = jest.spyOn(context, "beginPath");
   arc = jest.spyOn(context, "arc");
   stroke = jest.spyOn(context, "stroke");
+  fill = jest.spyOn(context, "fill");
 });
 
 describe("Draw", () => {
@@ -38,6 +40,10 @@ describe("Draw", () => {
 
   it("Developer use a Draw class, so should context.stroke method should be called", () => {
     expect(stroke).toHaveBeenCalled();
+  });
+
+  it("Developer use a Draw class, so should context.stroke method should be called", () => {
+    expect(fill).toHaveBeenCalled();
   });
 
   it("Developer set property fillColor to red, so property value context.fillStyle have to be #f00", () => {
