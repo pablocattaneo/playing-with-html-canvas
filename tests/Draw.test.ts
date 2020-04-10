@@ -9,7 +9,7 @@ let stroke: object;
 let arc: object;
 let fill: object;
 let circle: Circle;
-beforeEach(() => {
+beforeAll(() => {
   const canvas = document.createElement("canvas");
   canvas.setAttribute("id", "my-canvas");
   canvas.setAttribute("width", "400");
