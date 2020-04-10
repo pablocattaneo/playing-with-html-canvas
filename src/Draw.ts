@@ -15,5 +15,6 @@ export default class Draw {
       0,
       2 * Math.PI
     );
+    this.context.stroke();
   }
 }
