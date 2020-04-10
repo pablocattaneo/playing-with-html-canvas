@@ -22,10 +22,6 @@ export default class Circle {
   private dinamicCoordinates: DinamicCoordinates = new DinamicCoordinates(0, 0);
   private radiusArc: number = 30;
   private maxRadiusArc: number = 70;
-  private fillColor: string =
-    Utilities.colorsArray[
-      Math.floor(Math.random() * Utilities.colorsArray.length)
-    ];
   constructor(
     private context: CanvasRenderingContext2D,
     private xCenterPositionArc: number,
@@ -33,7 +29,8 @@ export default class Circle {
     private strokeStyle: string,
     private lineWidth: number,
     private xPositionArcVelocity: number,
-    private yPositionArcVelocity: number
+    private yPositionArcVelocity: number,
+    private fillColor: string | CanvasGradient | CanvasPattern = "black"
   ) {
     this.context.strokeStyle = this.strokeStyle;
     this.context.lineWidth = this.lineWidth;
@@ -102,7 +99,34 @@ export default class Circle {
   getYCenterPositionArc() {
     return this.yCenterPositionArc
   }
+  getxPositionArcVelocity() {
+    return this.xPositionArcVelocity
+  }
+  getyPositionArcVelocity() {
+    return this.yPositionArcVelocity
+  }
   getRadiusArc() {
     return this.radiusArc
+  }
+  getFillColor() {
+    return this.fillColor
+  }
+  setXCenterPositionArc(xCenterPositionArc: number) {
+    this.xCenterPositionArc = xCenterPositionArc
+  }
+  setYCenterPositionArc(yCenterPositionArc: number) {
+    return this.yCenterPositionArc = yCenterPositionArc
+  }
+  setRadiusArc(setRadiusArc: number) {
+    this.radiusArc = setRadiusArc
+  }
+  setFillColor(color: string | CanvasGradient | CanvasPattern = "black") {
+    this.fillColor = color
+  }
+  setXPositionArcVelocity(setxPositionArcVelocity: number) {
+    this.xPositionArcVelocity = setxPositionArcVelocity
+  }
+  setYPositionArcVelocity(yPositionArcVelocity:number) {
+    this.yPositionArcVelocity = yPositionArcVelocity
   }
 }
