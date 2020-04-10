@@ -96,4 +96,13 @@ export default class Circle {
         this.radiusArc - growthVelocity > 5 ? growthVelocity : 1;
     }
   }
+  getXCenterPositionArc() {
+    return this.xCenterPositionArc
+  }
+  getYCenterPositionArc() {
+    return this.yCenterPositionArc
+  }
+  getRadiusArc() {
+    return this.radiusArc
+  }
 }
