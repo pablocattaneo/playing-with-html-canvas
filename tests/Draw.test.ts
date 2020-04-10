@@ -3,6 +3,7 @@ import Draw from "../src/Draw";
 let canvasEl: HTMLCanvasElement;
 let context: CanvasRenderingContext2D;
 let draw: Draw;
+let beginPath: object;
 beforeEach(() => {
   const canvas = document.createElement("canvas");
   canvas.setAttribute("id", "my-canvas");
@@ -12,12 +13,19 @@ beforeEach(() => {
   canvasEl = document.getElementById("my-canvas")! as HTMLCanvasElement;
   context = canvasEl.getContext("2d") as CanvasRenderingContext2D;
   draw = new Draw( context, 'red' );
+  beginPath = jest.spyOn(context, "beginPath");
 });
 
 describe("Draw", () => {
+  
   it("Developer use a Draw class, so should exist", () => {
     expect(draw).toBeInstanceOf(Draw);
   });
+
+  it("Developer use a Draw class, so should const.beginPath method should be called", () => {
+    expect(beginPath).toHaveBeenCalled()
+  });
+
   it("Developer set property fillColor to red, so property value context.fillStyle have to be #f00", () => {
     expect(context.fillStyle).toMatch('#f00');
   });
