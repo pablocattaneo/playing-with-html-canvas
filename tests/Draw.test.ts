@@ -22,8 +22,12 @@ describe("Draw", () => {
     expect(context.fillStyle).toMatch('#f00');
   });
   it("Developer set property fillColor to #008000, so property value context.fillStyle have to be #008000", () => {
-    draw = new Draw( context, '#008000' );
+    console.log(context.fillStyle)
     expect(context.fillStyle).toMatch('#008000');
+  });
+  it("Developer set property fillColor to createLinearGradient(20,0, 220,0), so property value context.fillStyle have to be an instance of CanvasGradient", () => {
+    draw = new Draw( context, context.createLinearGradient(20,0, 220,0) );
+    expect(context.fillStyle).toBeInstanceOf(CanvasGradient);
   });
   it("Developer set NO property fillColor, so property value context.fillStyle have to be #000", () => {
     draw = new Draw( context );
