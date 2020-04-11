@@ -1,13 +1,5 @@
 import DinamicCoordinates from "./DinamicCoordinates";
 
-// let dinamicCoordinates: DinamicCoordinates;
-
-// dinamicCoordinates = new DinamicCoordinates(0, 0);
-
-// window.addEventListener("mousemove", (event) => {
-//   dinamicCoordinates = new DinamicCoordinates(event.x, event.y);
-// });
-
 class Utilities {
   static colorsArray: string[] = [
     "rgba(237, 188, 160, 1)",
@@ -35,98 +27,40 @@ export default class Circle {
     this.context.strokeStyle = this.strokeStyle;
     this.context.lineWidth = this.lineWidth;
   }
-  draw() {
-    this.context.beginPath();
-    this.context.fillStyle = this.fillColor;
-    this.context.arc(
-      this.xCenterPositionArc,
-      this.yCenterPositionArc,
-      this.radiusArc,
-      0,
-      2 * Math.PI
-    );
-    this.context.stroke();
-    this.context.fill();
-  }
-  redraw(
-    canvas: HTMLCanvasElement,
-    coordinateMustKeepInsideCanvas: boolean = true
-  ) {
-    if (coordinateMustKeepInsideCanvas) {
-      if (
-        this.xCenterPositionArc + this.radiusArc >= canvas.width ||
-        this.xCenterPositionArc - this.radiusArc <= 0
-      ) {
-        this.xPositionArcVelocity = -this.xPositionArcVelocity;
-      }
-      if (
-        this.yCenterPositionArc + this.radiusArc >= canvas.height ||
-        this.yCenterPositionArc - this.radiusArc <= 0
-      ) {
-        this.yPositionArcVelocity = -this.yPositionArcVelocity;
-      }
-    }
-    this.leftRightMouseEffect(this.dinamicCoordinates);
-    this.xCenterPositionArc += this.xPositionArcVelocity;
-    this.yCenterPositionArc += this.yPositionArcVelocity;
-    this.draw();
-  }
-  setCoordinatesLeftRightMouseEffect(
-    dinamicCoordinatesParameter: DinamicCoordinates
-  ) {
-    this.dinamicCoordinates = dinamicCoordinatesParameter;
-  }
-  leftRightMouseEffect(
-    dinamicCoordinates: DinamicCoordinates,
-    distanceForGrowth: number = 10,
-    growthVelocity: number = 1
-  ) {
-    if (
-      dinamicCoordinates.xPosition - this.xCenterPositionArc >=
-      distanceForGrowth
-    ) {
-      if (this.radiusArc < this.maxRadiusArc) {
-        this.radiusArc += growthVelocity;
-      }
-    } else if (this.radiusArc > 5) {
-      this.radiusArc -=
-        this.radiusArc - growthVelocity > 5 ? growthVelocity : 1;
-    }
-  }
   getXCenterPositionArc() {
-    return this.xCenterPositionArc
+    return this.xCenterPositionArc;
   }
   getYCenterPositionArc() {
-    return this.yCenterPositionArc
+    return this.yCenterPositionArc;
   }
   getxPositionArcVelocity() {
-    return this.xPositionArcVelocity
+    return this.xPositionArcVelocity;
   }
   getyPositionArcVelocity() {
-    return this.yPositionArcVelocity
+    return this.yPositionArcVelocity;
   }
   getRadiusArc() {
-    return this.radiusArc
+    return this.radiusArc;
   }
   getFillColor() {
-    return this.fillColor
+    return this.fillColor;
   }
   setXCenterPositionArc(xCenterPositionArc: number) {
-    this.xCenterPositionArc = xCenterPositionArc
+    this.xCenterPositionArc = xCenterPositionArc;
   }
   setYCenterPositionArc(yCenterPositionArc: number) {
-    return this.yCenterPositionArc = yCenterPositionArc
+    return (this.yCenterPositionArc = yCenterPositionArc);
   }
   setRadiusArc(setRadiusArc: number) {
-    this.radiusArc = setRadiusArc
+    this.radiusArc = setRadiusArc;
   }
   setFillColor(color: string | CanvasGradient | CanvasPattern = "black") {
-    this.fillColor = color
+    this.fillColor = color;
   }
   setXPositionArcVelocity(setxPositionArcVelocity: number) {
-    this.xPositionArcVelocity = setxPositionArcVelocity
+    this.xPositionArcVelocity = setxPositionArcVelocity;
   }
-  setYPositionArcVelocity(yPositionArcVelocity:number) {
-    this.yPositionArcVelocity = yPositionArcVelocity
+  setYPositionArcVelocity(yPositionArcVelocity: number) {
+    this.yPositionArcVelocity = yPositionArcVelocity;
   }
 }
