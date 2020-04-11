@@ -12,8 +12,6 @@ class Utilities {
 
 export default class Circle {
   private dinamicCoordinates: DinamicCoordinates = new DinamicCoordinates(0, 0);
-  private radiusArc: number = 30;
-  private maxRadiusArc: number = 70;
   constructor(
     private context: CanvasRenderingContext2D,
     private xCenterPositionArc: number,
@@ -22,7 +20,9 @@ export default class Circle {
     private lineWidth: number,
     private xPositionArcVelocity: number,
     private yPositionArcVelocity: number,
-    private fillColor: string | CanvasGradient | CanvasPattern = "black"
+    private fillColor: string | CanvasGradient | CanvasPattern = "black",
+    private radiusArc: number = 30,
+    private maxRadiusArc: number = 70
   ) {
     this.context.strokeStyle = this.strokeStyle;
     this.context.lineWidth = this.lineWidth;
