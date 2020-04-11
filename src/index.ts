@@ -24,50 +24,47 @@ class Utilities {
   ];
 }
 
-
 const circleArray: Circle[] = [];
 for (let index = 0; index < 150; index++) {
-  const xPositionArc: number = Math.random() * canvas.width;
-  const yPositionArc: number = Math.random() * canvas.height;
-  const strokeStyle: string = "black";
-  const lineWidth: number = 1;
-  const xPositionArcVelocity: number = Math.random() * 10;
-  const yPositionArcVelocity: number = Math.random() * 10;
-  const color = Utilities.colorsArray[
-    Math.floor(Math.random() * Utilities.colorsArray.length)
-  ];
+  const color =
+    Utilities.colorsArray[
+      Math.floor(Math.random() * Utilities.colorsArray.length)
+    ];
   circleArray.push(
     new Circle(
       context,
-      xPositionArc,
-      yPositionArc,
-      strokeStyle,
-      lineWidth,
-      xPositionArcVelocity,
-      yPositionArcVelocity,
+      Math.random() * canvas.width,
+      Math.random() * canvas.height,
+      "black",
+      1,
+      Math.random() * 10,
+      Math.random() * 10,
       color
     )
   );
 }
-console.log(circleArray)
 function animate() {
   window.requestAnimationFrame(animate);
   context.clearRect(0, 0, canvas.width, canvas.height);
   circleArray.forEach((circle) => {
     if (
-      (circle.getXCenterPositionArc() + circle.getRadiusArc()) >= canvas.width ||
-      (circle.getXCenterPositionArc() - circle.getRadiusArc()) <= 0
+      circle.getXCenterPositionArc() + circle.getRadiusArc() >= canvas.width ||
+      circle.getXCenterPositionArc() - circle.getRadiusArc() <= 0
     ) {
-      circle.setXPositionArcVelocity( - circle.getxPositionArcVelocity())
+      circle.setXPositionArcVelocity(-circle.getxPositionArcVelocity());
     }
     if (
       circle.getYCenterPositionArc() + circle.getRadiusArc() >= canvas.height ||
       circle.getYCenterPositionArc() - circle.getRadiusArc() <= 0
     ) {
-      circle.setYPositionArcVelocity( - circle.getyPositionArcVelocity())
-    } 
-    circle.setXCenterPositionArc(circle.getXCenterPositionArc() + circle.getxPositionArcVelocity())
-    circle.setYCenterPositionArc(circle.getYCenterPositionArc() + circle.getyPositionArcVelocity())
+      circle.setYPositionArcVelocity(-circle.getyPositionArcVelocity());
+    }
+    circle.setXCenterPositionArc(
+      circle.getXCenterPositionArc() + circle.getxPositionArcVelocity()
+    );
+    circle.setYCenterPositionArc(
+      circle.getYCenterPositionArc() + circle.getyPositionArcVelocity()
+    );
     new Draw(context, circle, circle.getFillColor());
   });
 }
