@@ -45,6 +45,9 @@ export default class Circle {
   getFillColor() {
     return this.fillColor;
   }
+  getMaxRadiusArc() {
+    return this.maxRadiusArc
+  }
   setXCenterPositionArc(xCenterPositionArc: number) {
     this.xCenterPositionArc = xCenterPositionArc;
   }
@@ -62,5 +65,8 @@ export default class Circle {
   }
   setYPositionArcVelocity(yPositionArcVelocity: number) {
     this.yPositionArcVelocity = yPositionArcVelocity;
+  }
+  setMaxRadiusArc(maxRadiusArc: number) {
+    this.radiusArc = maxRadiusArc
   }
 }

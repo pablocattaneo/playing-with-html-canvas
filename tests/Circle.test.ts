@@ -19,4 +19,8 @@ describe("Circle", () => {
   it("Circle exist", () => {
     expect(circle).toBeInstanceOf(Circle);
   });
+  it('Developer called getMaxRadiusArc width default value so value 70 must retun  ', () => {
+    circle = new Circle(context, 15, 15, "black", 5, 5, 5);
+    expect(circle.getMaxRadiusArc()).toBe(70)
+  });
 });
