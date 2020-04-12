@@ -67,6 +67,10 @@ export default class Circle {
     this.yPositionArcVelocity = yPositionArcVelocity;
   }
   setMaxRadiusArc(maxRadiusArc: number) {
-    this.maxRadiusArc = maxRadiusArc
+    if(maxRadiusArc > 10){
+      this.maxRadiusArc = maxRadiusArc
+    } else {
+      throw new Error('maxRadiusArc params must to be greater than 10');
+    }
   }
 }

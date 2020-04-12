@@ -24,8 +24,17 @@ describe("Circle", () => {
     expect(circle.getMaxRadiusArc()).toBe(70)
   });
   it('Developer set setMaxRadiusArc(80) so value 80 must retun when call getMaxRadiusArc  ', () => {
-    circle = new Circle(context, 15, 15, "black", 5, 5, 5);
     circle.setMaxRadiusArc(80)
     expect(circle.getMaxRadiusArc()).toBe(80)
+  });
+  it('Developer set setMaxRadiusArc(9) so function have to thrown an error', () => {
+    expect(() => {
+      circle.setMaxRadiusArc(9)
+    }).toThrow();
+  });
+  it('Developer set setMaxRadiusArc(-1) so function have to thrown an error', () => {
+    expect(() => {
+      circle.setMaxRadiusArc(-1)
+    }).toThrow();
   });
 });
