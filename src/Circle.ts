@@ -48,7 +48,9 @@ export default class Circle {
         this.getYCenterPositionArc() + this.getyPositionArcVelocity()
       );
     } else {
-      throw new Error("widthBoundary and heightBoundary params must to be greater 0");
+      throw new Error(
+        "widthBoundary and heightBoundary params must to be greater 0"
+      );
     }
   }
   getXCenterPositionArc() {

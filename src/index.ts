@@ -47,7 +47,7 @@ function animate() {
   window.requestAnimationFrame(animate);
   context.clearRect(0, 0, canvas.width, canvas.height);
   circleArray.forEach((circle) => {
-    circle.bounce(canvas.width, canvas.height)
+    circle.bounce(canvas.width, canvas.height);
     new Draw(context, circle, circle.getFillColor());
   });
 }
