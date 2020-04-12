@@ -41,4 +41,7 @@ describe("Circle", () => {
       circle.setMaxRadiusArc(-1)
     }).toThrow();
   });
+  it('Bounce method shoul be defined in Circle', () => {
+    expect(circle.bounce).toBeDefined()
+  });
 });

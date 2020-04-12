@@ -47,24 +47,7 @@ function animate() {
   window.requestAnimationFrame(animate);
   context.clearRect(0, 0, canvas.width, canvas.height);
   circleArray.forEach((circle) => {
-    if (
-      circle.getXCenterPositionArc() + circle.getRadiusArc() >= canvas.width ||
-      circle.getXCenterPositionArc() - circle.getRadiusArc() <= 0
-    ) {
-      circle.setXPositionArcVelocity(-circle.getxPositionArcVelocity());
-    }
-    if (
-      circle.getYCenterPositionArc() + circle.getRadiusArc() >= canvas.height ||
-      circle.getYCenterPositionArc() - circle.getRadiusArc() <= 0
-    ) {
-      circle.setYPositionArcVelocity(-circle.getyPositionArcVelocity());
-    }
-    circle.setXCenterPositionArc(
-      circle.getXCenterPositionArc() + circle.getxPositionArcVelocity()
-    );
-    circle.setYCenterPositionArc(
-      circle.getYCenterPositionArc() + circle.getyPositionArcVelocity()
-    );
+    circle.bounce(canvas.width, canvas.height)
     new Draw(context, circle, circle.getFillColor());
   });
 }

@@ -27,6 +27,26 @@ export default class Circle {
     this.context.strokeStyle = this.strokeStyle;
     this.context.lineWidth = this.lineWidth;
   }
+  bounce(widthBoundary: number, heightBoundary: number) {
+    if (
+      this.getXCenterPositionArc() + this.getRadiusArc() >= widthBoundary ||
+      this.getXCenterPositionArc() - this.getRadiusArc() <= 0
+    ) {
+      this.setXPositionArcVelocity(-this.getxPositionArcVelocity());
+    }
+    if (
+      this.getYCenterPositionArc() + this.getRadiusArc() >= heightBoundary ||
+      this.getYCenterPositionArc() - this.getRadiusArc() <= 0
+    ) {
+      this.setYPositionArcVelocity(-this.getyPositionArcVelocity());
+    }
+    this.setXCenterPositionArc(
+      this.getXCenterPositionArc() + this.getxPositionArcVelocity()
+    );
+    this.setYCenterPositionArc(
+      this.getYCenterPositionArc() + this.getyPositionArcVelocity()
+    );
+  }
   getXCenterPositionArc() {
     return this.xCenterPositionArc;
   }
@@ -46,7 +66,7 @@ export default class Circle {
     return this.fillColor;
   }
   getMaxRadiusArc() {
-    return this.maxRadiusArc
+    return this.maxRadiusArc;
   }
   setXCenterPositionArc(xCenterPositionArc: number) {
     this.xCenterPositionArc = xCenterPositionArc;
@@ -67,10 +87,10 @@ export default class Circle {
     this.yPositionArcVelocity = yPositionArcVelocity;
   }
   setMaxRadiusArc(maxRadiusArc: number) {
-    if(maxRadiusArc > 10){
-      this.maxRadiusArc = maxRadiusArc
+    if (maxRadiusArc > 10) {
+      this.maxRadiusArc = maxRadiusArc;
     } else {
-      throw new Error('maxRadiusArc params must to be greater than 10');
+      throw new Error("maxRadiusArc params must to be greater than 10");
     }
   }
 }
