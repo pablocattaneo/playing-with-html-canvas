@@ -28,24 +28,28 @@ export default class Circle {
     this.context.lineWidth = this.lineWidth;
   }
   bounce(widthBoundary: number, heightBoundary: number) {
-    if (
-      this.getXCenterPositionArc() + this.getRadiusArc() >= widthBoundary ||
-      this.getXCenterPositionArc() - this.getRadiusArc() <= 0
-    ) {
-      this.setXPositionArcVelocity(-this.getxPositionArcVelocity());
+    if (widthBoundary > 0 && heightBoundary > 0) {
+      if (
+        this.getXCenterPositionArc() + this.getRadiusArc() >= widthBoundary ||
+        this.getXCenterPositionArc() - this.getRadiusArc() <= 0
+      ) {
+        this.setXPositionArcVelocity(-this.getxPositionArcVelocity());
+      }
+      if (
+        this.getYCenterPositionArc() + this.getRadiusArc() >= heightBoundary ||
+        this.getYCenterPositionArc() - this.getRadiusArc() <= 0
+      ) {
+        this.setYPositionArcVelocity(-this.getyPositionArcVelocity());
+      }
+      this.setXCenterPositionArc(
+        this.getXCenterPositionArc() + this.getxPositionArcVelocity()
+      );
+      this.setYCenterPositionArc(
+        this.getYCenterPositionArc() + this.getyPositionArcVelocity()
+      );
+    } else {
+      throw new Error("widthBoundary and heightBoundary params must to be greater 0");
     }
-    if (
-      this.getYCenterPositionArc() + this.getRadiusArc() >= heightBoundary ||
-      this.getYCenterPositionArc() - this.getRadiusArc() <= 0
-    ) {
-      this.setYPositionArcVelocity(-this.getyPositionArcVelocity());
-    }
-    this.setXCenterPositionArc(
-      this.getXCenterPositionArc() + this.getxPositionArcVelocity()
-    );
-    this.setYCenterPositionArc(
-      this.getYCenterPositionArc() + this.getyPositionArcVelocity()
-    );
   }
   getXCenterPositionArc() {
     return this.xCenterPositionArc;

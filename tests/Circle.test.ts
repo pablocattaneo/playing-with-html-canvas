@@ -41,7 +41,12 @@ describe("Circle", () => {
       circle.setMaxRadiusArc(-1)
     }).toThrow();
   });
-  it('Bounce method shoul be defined in Circle', () => {
+  it('Bounce method should be defined in Circle', () => {
     expect(circle.bounce).toBeDefined()
+  });
+  it('When method bounce is call with negative number this method have to throw a error', () => {
+    expect(() => {
+      circle.bounce(-100, -500)
+    }).toThrow();
   });
 });
