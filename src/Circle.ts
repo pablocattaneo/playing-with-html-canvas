@@ -1,5 +1,3 @@
-import DinamicCoordinates from "./DinamicCoordinates";
-
 class Utilities {
   static colorsArray: string[] = [
     "rgba(237, 188, 160, 1)",
@@ -11,7 +9,6 @@ class Utilities {
 }
 
 export default class Circle {
-  private dinamicCoordinates: DinamicCoordinates = new DinamicCoordinates(0, 0);
   constructor(
     private context: CanvasRenderingContext2D,
     private xCenterPositionArc: number,

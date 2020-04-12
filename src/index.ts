@@ -1,5 +1,4 @@
 import Circle from "./Circle";
-import DinamicCoordinates from "./DinamicCoordinates";
 import Draw from "./Draw";
 
 const canvas = document.getElementById("canvas")! as HTMLCanvasElement;
