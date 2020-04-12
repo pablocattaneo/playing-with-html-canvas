@@ -13,6 +13,18 @@ window.addEventListener("resize", () => {
   canvas.height = window.innerHeight;
 });
 
+let mouseCoordinates: {
+  mouseX: number;
+  mouseY: number;
+} = {
+  mouseX: 0,
+  mouseY: 0,
+};
+window.addEventListener("mousemove", (event) => {
+  mouseCoordinates.mouseX = event.x;
+  mouseCoordinates.mouseY = event.y;
+});
+
 class Utilities {
   static colorsArray: string[] = [
     "rgba(237, 188, 160, 1)",
@@ -47,6 +59,13 @@ function animate() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   circleArray.forEach((circle) => {
     circle.bounce(canvas.width, canvas.height);
+    if (mouseCoordinates.mouseX > circle.getXCenterPositionArc()) {
+      if (circle.getRadiusArc() < circle.getMaxRadiusArc())
+        circle.setRadiusArc(circle.getRadiusArc() + 1);
+    } else {
+      if (circle.getRadiusArc() > 30 )
+        circle.setRadiusArc(circle.getRadiusArc() - 1);
+    }
     new Draw(context, circle, circle.getFillColor());
   });
 }
