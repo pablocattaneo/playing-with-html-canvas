@@ -25,15 +25,11 @@ function MustBePositiveNumber() {
 }
 
 // Decorator Factory
-function PositivesValues (index: number) {
-  return function (
-    target: any,
-    key: string,
-    propDesc: PropertyDescriptor
-  ) {
-    console.log("target", target)
-    console.log("key", key)
-    console.log("propDesc", propDesc)
+function PositivesValues(index: number) {
+  return function(target: any, key: string, propDesc: PropertyDescriptor) {
+    console.log("target", target);
+    console.log("key", key);
+    console.log("propDesc", propDesc);
     let originalFunction: Function = propDesc.value;
     propDesc.value = function() {
       let argValue = arguments[index];
@@ -42,7 +38,9 @@ function PositivesValues (index: number) {
       newArgs[index] = argValue || {};
       console.log("argValue", argValue);
       if (argValue < 10) {
-        throw new Error("maxRadiusArc params must to be greater than 10");
+        throw new Error(
+          `${key} params numer ${index} must to be greater than 10`
+        );
       }
       // this is the Class where the method is defined
       return originalFunction.apply(this, newArgs);
@@ -57,7 +55,7 @@ class Utilities {
     "rgba(157, 163, 164, 1)",
     "rgba(96, 77, 83, 1)",
     "rgba(219, 127, 142, 1)",
-    "rgba(255, 219, 218, 1)",
+    "rgba(255, 219, 218, 1)"
   ];
 }
 
@@ -77,31 +75,27 @@ export default class Circle {
     this.context.strokeStyle = this.strokeStyle;
     this.context.lineWidth = this.lineWidth;
   }
+  @PositivesValues(0)
+  @PositivesValues(1)
   bounce(widthBoundary: number, heightBoundary: number) {
-    if (widthBoundary > 0 && heightBoundary > 0) {
-      if (
-        this.getXCenterPositionArc() + this.getRadiusArc() >= widthBoundary ||
-        this.getXCenterPositionArc() - this.getRadiusArc() <= 0
-      ) {
-        this.setXPositionArcVelocity(-this.getxPositionArcVelocity());
-      }
-      if (
-        this.getYCenterPositionArc() + this.getRadiusArc() >= heightBoundary ||
-        this.getYCenterPositionArc() - this.getRadiusArc() <= 0
-      ) {
-        this.setYPositionArcVelocity(-this.getyPositionArcVelocity());
-      }
-      this.setXCenterPositionArc(
-        this.getXCenterPositionArc() + this.getxPositionArcVelocity()
-      );
-      this.setYCenterPositionArc(
-        this.getYCenterPositionArc() + this.getyPositionArcVelocity()
-      );
-    } else {
-      throw new Error(
-        "widthBoundary and heightBoundary params must to be greater 0"
-      );
+    if (
+      this.getXCenterPositionArc() + this.getRadiusArc() >= widthBoundary ||
+      this.getXCenterPositionArc() - this.getRadiusArc() <= 0
+    ) {
+      this.setXPositionArcVelocity(-this.getxPositionArcVelocity());
     }
+    if (
+      this.getYCenterPositionArc() + this.getRadiusArc() >= heightBoundary ||
+      this.getYCenterPositionArc() - this.getRadiusArc() <= 0
+    ) {
+      this.setYPositionArcVelocity(-this.getyPositionArcVelocity());
+    }
+    this.setXCenterPositionArc(
+      this.getXCenterPositionArc() + this.getxPositionArcVelocity()
+    );
+    this.setYCenterPositionArc(
+      this.getYCenterPositionArc() + this.getyPositionArcVelocity()
+    );
   }
   getXCenterPositionArc() {
     return this.xCenterPositionArc;
