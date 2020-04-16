@@ -1,4 +1,4 @@
-import Circle from "../src/Circle";
+import Circle from "../src/Circle"
 
 let canvasEl: HTMLCanvasElement;
 let context: CanvasRenderingContext2D;

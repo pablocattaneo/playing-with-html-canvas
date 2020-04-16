@@ -1,3 +1,56 @@
+function Logger(constructor: Function) {
+  console.log("Loggin...");
+  console.log(constructor);
+}
+
+function LogMethod(
+  target: any,
+  name: string | Symbol,
+  descriptor: PropertyDescriptor
+) {
+  console.log("Decorator Method!");
+  console.log("target", target);
+  console.log("name", name);
+  console.log("descriptor", descriptor);
+}
+
+function MustBePositiveNumber() {
+  return function(target: any, name: string | Symbol, position: number) {
+    console.log("Decorator Method property!");
+    console.log("target", target);
+    console.log("name", name);
+    console.log("position", position);
+    console.log("position", position);
+  };
+}
+
+// Decorator Factory
+function PositivesValues (index: number) {
+  return function (
+    target: any,
+    key: string,
+    propDesc: PropertyDescriptor
+  ) {
+    console.log("target", target)
+    console.log("key", key)
+    console.log("propDesc", propDesc)
+    let originalFunction: Function = propDesc.value;
+    propDesc.value = function() {
+      let argValue = arguments[index];
+      let newArgs = [];
+      for (let i = 0; i < arguments.length; i++) newArgs.push(arguments[i]);
+      newArgs[index] = argValue || {};
+      console.log("argValue", argValue);
+      if (argValue < 10) {
+        throw new Error("maxRadiusArc params must to be greater than 10");
+      }
+      // this is the Class where the method is defined
+      return originalFunction.apply(this, newArgs);
+    };
+    return propDesc;
+  };
+}
+
 class Utilities {
   static colorsArray: string[] = [
     "rgba(237, 188, 160, 1)",
@@ -89,11 +142,9 @@ export default class Circle {
   setYPositionArcVelocity(yPositionArcVelocity: number) {
     this.yPositionArcVelocity = yPositionArcVelocity;
   }
+
+  @PositivesValues(0)
   setMaxRadiusArc(maxRadiusArc: number) {
-    if (maxRadiusArc > 10) {
-      this.maxRadiusArc = maxRadiusArc;
-    } else {
-      throw new Error("maxRadiusArc params must to be greater than 10");
-    }
+    this.maxRadiusArc = maxRadiusArc;
   }
 }
