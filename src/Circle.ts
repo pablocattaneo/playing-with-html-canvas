@@ -1,16 +1,12 @@
 // Decorator Factory
 function PositivesValues(index: number) {
   return function(target: any, key: string, propDesc: PropertyDescriptor) {
-    console.log("target", target);
-    console.log("key", key);
-    console.log("propDesc", propDesc);
     let originalFunction: Function = propDesc.value;
     propDesc.value = function() {
       let argValue = arguments[index];
       let newArgs = [];
       for (let i = 0; i < arguments.length; i++) newArgs.push(arguments[i]);
       newArgs[index] = argValue || {};
-      console.log("argValue", argValue);
       if (argValue < 10) {
         throw new Error(
           `${key} params numer ${index} must to be greater than 10`
