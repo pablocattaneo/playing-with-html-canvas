@@ -1,29 +1,3 @@
-function Logger(constructor: Function) {
-  console.log("Loggin...");
-  console.log(constructor);
-}
-
-function LogMethod(
-  target: any,
-  name: string | Symbol,
-  descriptor: PropertyDescriptor
-) {
-  console.log("Decorator Method!");
-  console.log("target", target);
-  console.log("name", name);
-  console.log("descriptor", descriptor);
-}
-
-function MustBePositiveNumber() {
-  return function(target: any, name: string | Symbol, position: number) {
-    console.log("Decorator Method property!");
-    console.log("target", target);
-    console.log("name", name);
-    console.log("position", position);
-    console.log("position", position);
-  };
-}
-
 // Decorator Factory
 function PositivesValues(index: number) {
   return function(target: any, key: string, propDesc: PropertyDescriptor) {
