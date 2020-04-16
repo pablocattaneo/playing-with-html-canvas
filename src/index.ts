@@ -36,7 +36,7 @@ class Utilities {
 }
 
 const circleArray: Circle[] = [];
-for (let index = 0; index < 150; index++) {
+for (let index = 0; index < 2; index++) {
   const color =
     Utilities.colorsArray[
       Math.floor(Math.random() * Utilities.colorsArray.length)
