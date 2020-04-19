@@ -1,4 +1,4 @@
-import Circle from "../src/Circle"
+import Circle from "../src/Circle";
 
 let canvasEl: HTMLCanvasElement;
 let context: CanvasRenderingContext2D;
@@ -48,5 +48,11 @@ describe("Circle", () => {
     expect(() => {
       circle.bounce(-100, -500);
     }).toThrow();
+  });
+});
+
+describe("Circle", () => {
+  it('gravity muest be defined ', () => {
+    expect(circle.gravity).toBeDefined()
   });
 });

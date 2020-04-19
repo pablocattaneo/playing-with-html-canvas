@@ -67,6 +67,9 @@ export default class Circle {
       this.getYCenterPositionArc() + this.getyPositionArcVelocity()
     );
   }
+  gravity () {
+    
+  }
   getXCenterPositionArc() {
     return this.xCenterPositionArc;
   }

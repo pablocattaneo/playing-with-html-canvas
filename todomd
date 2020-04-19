@@ -1,1 +1,4 @@
+-[] add gravity effect
 -[] Integrate test run before git commit
+-[] Apply some https://github.com/typestack/class-validator
+  -[] @IsPositive()
